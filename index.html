@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD78D6KPY0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XD78D6KPY0');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="LJYaAqCO1Fdm5IEKjR3OFrDTpbDCpbkpK6H7NED_TxA" />
+  <meta name="description" content="CYBZAN, entreprise de cybersécurité et d'IA : tests d'intrusion, audit de code, durcissement, OSINT, agents IA, création de CTF et formation pour institutions et entreprises dans le monde entier." />
+  <meta name="keywords" content="cybersécurité, pentest, VAPT, support à l'incidence, audit, durcissement, OSINT, threat intel, IA, automatisation, CTF, formation, CYBZAN" />
+  <meta name="author" content="CYBZAN" />
+
+  <meta property="og:title" content="CYBZAN : protection des infrastructures numériques">
+  <meta property="og:description" content="Pentest, audit, durcissement, OSINT, agents IA et formations. CYBZAN protège les organisations et contribue à une transformation numérique sûre.">
+  <meta property="og:image" content="https://www.cybzan.com/cyb.png">
+  <meta property="og:url" content="https://www.cybzan.com">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CYBZAN : protection des infrastructures numériques">
+  <meta name="twitter:description" content="Pentest, audit, durcissement, OSINT, agents IA et formations.">
+  <meta name="twitter:image" content="https://www.cybzan.com/cyb.png">
+
+  <link rel="icon" href="cyb.png" type="image/png">
+  <link rel="canonical" href="https://www.cybzan.com/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>CYBZAN : protection des infrastructures numériques</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+
+  <meta name="robots" content="index, follow">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CYBZAN",
+    "url": "https://www.cybzan.com",
+    "logo": "https://www.cybzan.com/cyb.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@cybzan.com",
+      "contactType": "customer service",
+      "availableLanguage": ["fr", "en"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cotonou",
+      "addressCountry": "BJ"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/cybzan/",
+      "https://ctf-radar.cybzan.com"
+    ],
+    "description": "Entreprise de cybersécurité et d'IA : tests d'intrusion, audit, durcissement, OSINT, agents IA, CTF et formation."
+  }
+  </script>
+
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #111111;
+    --card: #151515;
+    --primary: #eab308;
+    --primary-soft: rgba(234,179,8,0.12);
+    --text: #e5e5e5;
+    --muted: #a3a3a3;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    margin: 0;
+  }
+
+  h1, h2, h3, .heading, .stat-number {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* ---------- Loader ---------- */
+  #site-loader {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #060606;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    transition: opacity .6s ease, visibility .6s;
+  }
+  #site-loader.done { opacity: 0; visibility: hidden; }
+  #site-loader .logo-pulse {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    animation: loaderPulse 1.4s ease-in-out infinite;
+  }
+  #site-loader .logo-pulse img { width: 70px; height: 70px; object-fit: contain; border-radius: 50%; }
+  @keyframes loaderPulse { 0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(234,179,8,.4);} 50% { transform: scale(1.06); box-shadow: 0 0 0 18px rgba(234,179,8,0);} }
+
+  /* ---------- Nav ---------- */
+  .main-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(6,6,6,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(234,179,8,0.14);
+    transition: background .3s;
+  }
+  .main-nav.scrolled { background: rgba(6,6,6,0.98); box-shadow: 0 4px 30px rgba(0,0,0,.6); }
+    .nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .nav-logo { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+  .nav-logo .logo-circle { width: 46px; height: 46px; border-radius: 50%; background: var(--primary); display:flex; align-items:center;justify-content:center; }
+  .nav-logo .logo-circle img { width: 38px; height: 38px; object-fit: contain; border-radius: 50%; }
+  .nav-logo .logo-text { font-family: 'Montserrat'; font-weight: 900; color: var(--primary); font-size: 1.35rem; letter-spacing: .05em; }
+  .nav-links { display: flex; align-items: center; gap: 1.8rem; }
+  .nav-links a { color: #d4d4d4; text-decoration: none; font-size: .9rem; font-weight: 500; position: relative; padding: .4rem 0; transition: color .2s; }
+  .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--primary); transition: width .25s; }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta { background: var(--primary); color: #000; font-weight: 800; padding: .65rem 1.4rem; border-radius: 10px; text-decoration: none; font-size: .9rem; transition: transform .2s, box-shadow .2s; display: inline-flex; align-items: center; gap: .5rem; }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(234,179,8,.35); }
+  .burger { display: none; background:none; border:none; color: var(--primary); font-size: 1.5rem; cursor: pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 92vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 76px;
+  }
+  .hero-media {
+    position: absolute; inset: 0;
+  }
+  .hero-media img, .hero-media video {
+    width: 100%; height: 100%; object-fit: cover; opacity: .32;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, rgba(4,4,4,.96) 0%, rgba(4,4,4,.88) 40%, rgba(10,10,10,.55) 100%);
+  }
+  .hero-overlay-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(234,179,8,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(234,179,8,0.05) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: radial-gradient(ellipse at 65% 50%, black 0%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse at 65% 50%, black 0%, transparent 72%);
+  }
+  .hero-content { position: relative; max-width: 1240px; margin: 0 auto; padding: 3rem 1.5rem; width: 100%; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: .6rem;
+    border: 1px solid rgba(234,179,8,.45); border-radius: 999px;
+    padding: .45rem 1.1rem; font-size: .78rem; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--primary); font-weight: 700;
+    background: rgba(234,179,8,.07);
+    margin-bottom: 1.6rem;
+  }
+  .hero-eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 12px var(--primary); animation: pulseDot 1.8s infinite; }
+  @keyframes pulseDot { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6.4vw, 4.6rem);
+    font-weight: 900; line-height: 1.06; color: #fff;
+    margin: 0 0 1.4rem; max-width: 780px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 .accent {
+    color: var(--primary);
+    text-shadow: 0 0 24px rgba(234,179,8,.45);
+  }
+  .hero p.lead {
+    font-size: 1.08rem; color: #c9c9c9; max-width: 640px;
+    line-height: 1.75; margin-bottom: 2.2rem;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .btn-primary-lg, .btn-ghost-lg {
+    padding: .95rem 2rem; border-radius: 12px; font-weight: 800;
+    text-decoration: none; font-size: .98rem; letter-spacing: .02em;
+    display: inline-flex; align-items: center; gap: .6rem;
+    transition: transform .2s, box-shadow .2s, background .2s, color .2s, border-color .2s;
+    font-family: 'Montserrat';
+  }
+  .btn-primary-lg { background: var(--primary); color: #000; box-shadow: 0 10px 30px rgba(234,179,8,.25); }
+  .btn-primary-lg:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(234,179,8,.4); }
+  .btn-ghost-lg { border: 1.5px solid rgba(234,179,8,.7); color: var(--primary); background: transparent; }
+  .btn-ghost-lg:hover { background: rgba(234,179,8,.1); }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    width: 26px; height: 44px; border: 2px solid rgba(234,179,8,.5);
+    border-radius: 14px; display: flex; justify-content: center;
+  }
+  .hero-scroll::before {
+    content: ''; width: 4px; height: 9px; background: var(--primary);
+    border-radius: 4px; margin-top: 7px;
+    animation: scrollDot 1.6s infinite;
+  }
+  @keyframes scrollDot { 0% { transform: translateY(0); opacity:1; } 70% { transform: translateY(14px); opacity:0; } 100% { transform: translateY(0); opacity:0; } }
+
+  /* ---------- Stats ---------- */
+  .about-section { padding: 5.5rem 1.5rem 4rem; max-width: 1240px; margin: 0 auto; }
+  .about-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 3rem; align-items: center; }
+  .about-eyebrow { font-size: .75rem; letter-spacing: .25em; text-transform: uppercase; color: var(--primary); font-weight: 700; margin-bottom: .7rem; }
+  .about-text { font-size: 1.02rem; line-height: 1.85; color: #bfbfbf; }
+  .stats-title { font-size: 1rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 800; color: #fff; margin-top: 1.4rem; }
+  .stats-title strong { color: var(--primary); }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .stat-item {
+    background: linear-gradient(150deg, var(--card), #0d0d0d);
+    border: 1px solid #232323; border-radius: 16px;
+    padding: 1.5rem 1.3rem;
+    transition: transform .25s, border-color .25s, box-shadow .25s;
+  }
+  .stat-item:hover { transform: translateY(-6px); border-color: rgba(234,179,8,.55); box-shadow: 0 12px 34px rgba(234,179,8,.12); }
+  .stat-number {
+    font-size: 2.1rem; font-weight: 800; color: var(--primary);
+    font-variant-numeric: tabular-nums;
+    display: inline-flex; align-items: baseline; gap: .1em;
+  }
+  .stat-label { font-size: .82rem; color: var(--muted); margin-top: .45rem; line-height: 1.45; display: block; }
+
+  /* ---------- Section headers ---------- */
+  .section { padding: 5.5rem 1.5rem; }
+  .section-inner { max-width: 1240px; margin: 0 auto; }
+  .section-head { text-align: center; margin-bottom: 3.4rem; }
+  .section-eyebrow { font-size: .75rem; letter-spacing: .28em; text-transform: uppercase; color: var(--primary); font-weight: 800; margin-bottom: .7rem; }
+  .section-title { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 900; color: #fff; margin: 0 0 .8rem; }
+  .section-title .slash { color: var(--primary); }
+  .section-sub { color: var(--muted); max-width: 640px; margin: 0 auto; font-size: 1rem; line-height: 1.7; }
+
+  /* ---------- Services ---------- */
+  .services-grid {
+    display: grid; gap: 1.3rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+  .service-card {
+    position: relative;
+    background: linear-gradient(160deg, var(--card), #0c0c0c);
+    border: 1px solid #222; border-radius: 18px;
+    padding: 1.9rem 1.6rem;
+    overflow: hidden;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: linear-gradient(90deg, var(--primary), transparent);
+    opacity: 0; transition: opacity .3s;
+  }
+  .service-card:hover { transform: translateY(-8px); border-color: rgba(234,179,8,.5); box-shadow: 0 18px 44px rgba(234,179,8,.13); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: var(--primary-soft);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem; color: var(--primary); font-size: 1.3rem;
+    border: 1px solid rgba(234,179,8,.25);
+    transition: transform .3s;
+  }
+  .service-card:hover .service-icon { transform: scale(1.08) rotate(-4deg); }
+  .service-card h3 { font-size: 1.14rem; font-weight: 800; color: #fff; margin: 0 0 .55rem; }
+  .service-card p { font-size: .9rem; color: var(--muted); line-height: 1.65; margin: 0; }
+
+  /* ---------- Realisations / proof ---------- */
+  .proof-grid { display: grid; gap: 1.3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+  .proof-card {
+    background: linear-gradient(160deg, var(--card), #0c0c0c);
+    border: 1px solid #222; border-radius: 18px; padding: 1.9rem 1.6rem;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+    position: relative;
+  }
+  .proof-card:hover { transform: translateY(-6px); border-color: rgba(234,179,8,.45); box-shadow: 0 14px 36px rgba(234,179,8,.12); }
+  .proof-tag { position: absolute; top: 1.4rem; right: 1.4rem; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 800; color: #000; background: var(--primary); padding: .3rem .6rem; border-radius: 6px; }
+  .proof-card h3 { color: #fff; font-weight: 800; font-size: 1.08rem; margin: 0 0 .5rem; }
+  .proof-card p { color: var(--muted); font-size: .88rem; line-height: 1.65; margin: 0; }
+
+  /* ---------- CTA form ---------- */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,320px),1fr)); gap: 2.4rem; align-items: start; }
+  .contact-card { background: linear-gradient(160deg, var(--card), #0c0c0c); border: 1px solid #222; border-radius: 18px; padding: 2rem 1.7rem; }
+  .contact-card h3 { color:#fff; font-size: 1.15rem; margin: 0 0 1.2rem; }
+  .contact-line { display: flex; align-items: flex-start; gap: .9rem; margin-bottom: 1.1rem; }
+  .contact-line .ico { width: 40px; height: 40px; border-radius: 10px; background: var(--primary-soft); border: 1px solid rgba(234,179,8,.25); display:flex; align-items:center;justify-content:center; color: var(--primary); flex-shrink: 0; }
+  .contact-line .lbl { font-size: .74rem; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .15rem; }
+  .contact-line .val a, .contact-line .val { color: #fff; font-size: .95rem; text-decoration: none; word-break: break-all; }
+  .contact-line .val a:hover { color: var(--primary); }
+  .lead-form label { display: block; font-size: .82rem; color: #d4d4d4; font-weight: 600; margin-bottom: .4rem; }
+  .lead-form input, .lead-form select, .lead-form textarea {
+    width: 100%; background: #0d0d0d; border: 1px solid #2a2a2a;
+    border-radius: 10px; padding: .85rem 1rem; color: #fff; font-size: .92rem;
+    font-family: inherit; transition: border-color .2s, box-shadow .2s;
+    margin-bottom: 1.1rem;
+  }
+  .lead-form input:focus, .lead-form select:focus, .lead-form textarea:focus {
+    outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(234,179,8,.15);
+  }
+  .lead-form input.err, .lead-form select.err { border-color: #ef4444; }
+  .lead-submit {
+    width: 100%; background: var(--primary); color:#000; font-weight: 900;
+    padding: 1rem; border-radius: 12px; border: none; cursor: pointer;
+    font-family: 'Montserrat'; font-size: .98rem;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .lead-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(234,179,8,.35); }
+
+  /* ---------- Footer ---------- */
+  footer { background: #060606; border-top: 1px solid #1d1d1d; padding: 3.6rem 1.5rem 2rem; }
+  .footer-inner { max-width: 1240px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+  .footer-grid h4 { color:#fff; font-size: .86rem; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 1rem; }
+  .footer-grid p, .footer-grid a { color: var(--muted); font-size: .9rem; line-height: 1.7; text-decoration: none; }
+  .footer-grid a:hover { color: var(--primary); }
+  .footer-links { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
+  .footer-bottom { border-top: 1px solid #1a1a1a; padding-top: 1.6rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+  .footer-bottom p { color: #666; font-size: .82rem; margin: 0; }
+
+  /* ---------- Popup ---------- */
+  .popup-overlay {
+    position: fixed; inset: 0; z-index: 2000; display: none;
+    align-items: center; justify-content: center;
+    background: rgba(0,0,0,.82); padding: 1.2rem;
+  }
+  .popup-overlay.show { display: flex; }
+  .popup-box {
+    background: linear-gradient(160deg, #161616, #0c0c0c);
+    border: 2px solid var(--primary); border-radius: 20px;
+    padding: 2.4rem 2rem; max-width: 430px; width: 100%;
+    text-align: center; position: relative;
+    animation: popIn .35s ease-out;
+  }
+  @keyframes popIn { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .popup-box .check { width: 74px; height: 74px; border-radius: 50%; background: var(--primary); margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.8rem; }
+  .popup-box h3 { color: #fff; font-size: 1.5rem; margin: 0 0 .5rem; }
+  .popup-box p { color: var(--muted); margin: 0 0 1.4rem; }
+  .popup-box button { background: var(--primary); color:#000; font-weight: 800; border: none; padding: .8rem 2rem; border-radius: 10px; cursor: pointer; font-family: 'Montserrat'; }
+
+  /* ---------- Reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(34px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .d1 { transition-delay: .08s; } .d2 { transition-delay: .16s; } .d3 { transition-delay: .24s; } .d4 { transition-delay: .32s; }
+
+  /* ---------- Mobile ---------- */
+  .mobile-menu {
+    display: none; background: rgba(6,6,6,.98);
+    border-bottom: 1px solid #1c1c1c; padding: 1rem 1.5rem 1.4rem;
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a { display: block; color: #d4d4d4; text-decoration: none; padding: .65rem 0; font-size: .95rem; border-bottom: 1px solid #141414; }
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .burger { display: block; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero { min-height: 84vh; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); }
+      }
+  @media (max-width: 480px) {
+    .stats-grid { gap: .7rem; }
+    .stat-item { padding: 1.1rem .9rem; }
+    .stat-number { font-size: 1.6rem; }
+  }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="site-loader">
+    <div class="logo-pulse"><img src="cyb.png" alt="CYBZAN"></div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="main-nav" id="mainnav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <span class="logo-circle"><img src="cyb.png" alt="Logo CYBZAN"></span>
+        <span class="logo-text">CYBZAN</span>
+      </a>
+      <div class="nav-links">
+        <a href="#home">Accueil</a>
+        <a href="#about">L'entreprise</a>
+        <a href="#services">Services</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta">Demander un audit <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-menu" id="mobilemenu">
+      <a href="#home">Accueil</a>
+      <a href="#about">L'entreprise</a>
+      <a href="#services">Services</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1920&q=80" alt="Cyberdéfense">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-overlay-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="dot"></span> Entreprise de cybersécurité &amp; IA</div>
+      <h1>Chaque système a une <span class="accent">faille</span>. Nous la trouvons <span class="accent">avant les autres</span>.</h1>
+      <p class="lead">
+        CYBZAN accompagne institutions, grandes entreprises et PME dans le monde entier :
+        cybersécurité opérationnelle (pentest, audit, durcissement) et intelligence
+        artificielle appliquée (agents autonomes, automatisation, OSINT) pour une
+        transformation numérique sûre et résiliente.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary-lg">Demander un audit <i class="fas fa-shield-alt"></i></a>
+        <a href="#services" class="btn-ghost-lg">Découvrir nos services <i class="fas fa-arrow-down"></i></a>
+      </div>
+    </div>
+    <div class="hero-scroll"></div>
+  </header>
+
+  <!-- About + stats -->
+  <section class="about-section" id="about">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="about-eyebrow">L'entreprise</p>
+        <p class="about-text">
+          CYBZAN est une entreprise de cybersécurité et d'intelligence artificielle qui soutient la résilience
+          numérique, la gestion du risque cyber et le développement des compétences dans le monde entier.
+          Nous assistons institutions publiques, organisations régionales et acteurs privés dans
+          leur transformation numérique sécurisée : protection des infrastructures critiques,
+          appui opérationnel ponctuel, et construction de capacités de cybersécurité durables.
+        </p>
+        <p class="stats-title">Rejoignez les entreprises qui font <strong>confiance à CYBZAN</strong></p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item reveal d1">
+          <span class="stat-number"><span class="count" data-target="24">0</span>/<span class="count" data-target="7">0</span></span>
+          <span class="stat-label">Surveillance continue</span>
+        </div>
+        <div class="stat-item reveal d2">
+          <span class="stat-number"><span class="count" data-target="8">0</span>+</span>
+          <span class="stat-label">Pays couverts par nos missions</span>
+        </div>
+        <div class="stat-item reveal d3">
+          <span class="stat-number"><span class="count" data-target="8000">0</span>+</span>
+          <span class="stat-label">Personnes formées &amp; sensibilisées</span>
+        </div>
+        <div class="stat-item reveal d4">
+          <span class="stat-number"><span class="count" data-target="500">0</span>+</span>
+          <span class="stat-label">Actifs analysés chaque mois</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services" style="background: linear-gradient(180deg, #060606, #0d0d0d);">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">Expertise opérationnelle</p>
+        <h2 class="section-title"><span class="slash">//</span> Nos Services</h2>
+        <p class="section-sub">
+          De la détection en temps réel à la remédiation, une offre complète pour protéger vos
+          systèmes, réduire vos risques et accélérer vos opérations avec l'IA.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-crosshairs"></i></div>
+          <h3>VAPT : tests d'intrusion</h3>
+          <p>Évaluation de vulnérabilités et tests d'intrusion (web, réseau, Active Directory, mobile) pour réduire vos risques cyber.</p>
+        </div>
+        <div class="service-card reveal d1">
+          <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+          <h3>Audit de cybersécurité</h3>
+          <p>Nous évaluons vos systèmes d'information pour identifier les risques et renforcer votre sécurité.</p>
+        </div>
+        <div class="service-card reveal d2">
+          <div class="service-icon"><i class="fas fa-lock"></i></div>
+          <h3>Durcissement des systèmes</h3>
+          <p>Configuration sécurisée serveurs, postes, réseaux et cloud selon les standards CIS, ANSSI et bonnes pratiques du secteur.</p>
+        </div>
+        <div class="service-card reveal d3">
+          <div class="service-icon"><i class="fas fa-code"></i></div>
+          <h3>Audit de code source</h3>
+          <p>Revue sécurisée de votre code applicatif : injections, failles logiques, secrets exposés, avec correctifs proposés.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-brain"></i></div>
+          <h3>Intégration IA &amp; automatisation</h3>
+          <p>Agents IA autonomes, veille automatisée, traitement de données : l'IA directement dans vos workflows métier et sécurité.</p>
+        </div>
+        <div class="service-card reveal d1">
+          <div class="service-icon"><i class="fas fa-search"></i></div>
+          <h3>OSINT &amp; renseignement sur les menaces</h3>
+          <p>Cartographie de votre surface d'exposition, détection de données fuitées, veille CTI ciblée et alerting en temps réel.</p>
+        </div>
+        <div class="service-card reveal d2">
+          <div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h3>Formation &amp; sensibilisation</h3>
+          <p>Programmes pour renforcer durablement les compétences de vos équipes et l'hygiène informatique de vos collaborateurs.</p>
+        </div>
+        <div class="service-card reveal d3">
+          <div class="service-icon"><i class="fas fa-flag"></i></div>
+          <h3>Création de CTF</h3>
+          <p>Challenges Capture The Flag sur mesure : infrastructure, plateforme, modération. Recrutement, team building, formation.</p>
+        </div>
+      </div>
+  </section>
+
+  
+
+  <!-- Réalisations -->
+  <section class="section" id="realisations" style="background: #0d0d0d;">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">Le terrain</p>
+        <h2 class="section-title"><span class="slash">//</span> Réalisations &amp; Clients</h2>
+        <p class="section-sub">Des outils, des événements et des missions réalisés pour des clients réels, pas de promesses théoriques.</p>
+      </div>
+
+      <div class="proof-grid">
+        <div class="proof-card reveal">
+          <span class="proof-tag">Produit IA</span>
+          <h3>PhishAnalyser IA</h3>
+          <p>Détection automatisée de phishing combinant IA et règles : analyse d'emails, d'URLs et d'infrastructures de sites frauduleux. Déployé pour des clients réels.</p>
+        </div>
+        <div class="proof-card reveal d1">
+          <span class="proof-tag">CTF</span>
+          <h3>AISCTF</h3>
+          <p>Compétition Capture The Flag dédiée à la sécurité de l'IA : conception des challenges, plateforme, orchestration et modération de bout en bout.</p>
+        </div>
+        <div class="proof-card reveal d2">
+          <span class="proof-tag">CTF × 2</span>
+          <h3>SADC CTF 2025 &amp; 2026</h3>
+          <p>Deux éditions d'un CTF majeur : infrastructure, challenges multi-catégories, scoreboard et management des équipes jusqu'à la finale.</p>
+        </div>
+        <div class="proof-card reveal d3">
+          <span class="proof-tag">Automation</span>
+          <h3>Agents IA opérationnels</h3>
+          <p>Agents autonomes en production : veille CTI, traitement de données, réponse automatique, orchestration multi-agents sur missions réelles.</p>
+        </div>
+        <div class="proof-card reveal d4">
+          <span class="proof-tag">Veille</span>
+          <h3>Veille CTI automatisée</h3>
+          <p>Pipelines complets de collecte de veille cybersécurité (breaches, CVEs, communautés adverses) avec publication automatique et alerting temps réel.</p>
+        </div>
+        <div class="proof-card reveal">
+          <span class="proof-tag">Formation</span>
+          <h3>Formations &amp; sensibilisation</h3>
+          <p>Sessions sécurité pour développeurs, analystes et direction. Accompagnement CTF pour équipes techniques et talents émergents.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">Démarrez</p>
+        <h2 class="section-title"><span class="slash">//</span> Contactez-nous</h2>
+        <p class="section-sub">Expliquez-nous votre contexte en quelques lignes. Réponse en 48h maximum.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <h3>Contact direct</h3>
+          <div class="contact-line">
+            <div class="ico"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="lbl">Email</div>
+              <div class="val"><a href="mailto:contact@cybzan.com">contact@cybzan.com</a></div>
+            </div>
+          </div>
+          <div class="contact-line">
+            <div class="ico"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="lbl">Base</div>
+              <div class="val">Cotonou, Bénin, missions remote dans le monde entier</div>
+            </div>
+          </div>
+          <div class="contact-line">
+            <div class="ico"><i class="fab fa-linkedin"></i></div>
+            <div>
+              <div class="lbl">LinkedIn</div>
+              <div class="val"><a href="https://www.linkedin.com/company/cybzan/" target="_blank" rel="noopener">linkedin.com/company/cybzan</a></div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="contact-card reveal d2">
+          <h3>Expliquez-nous votre besoin</h3>
+          <form id="lead-form" class="lead-form" method="POST" action="https://formsubmit.co/contact@cybzan.com">
+            <input type="hidden" name="_subject" value="CYBZAN : nouvelle demande depuis le site" />
+            <input type="hidden" name="_template" value="table" />
+            <div>
+              <label for="lf_name">Nom complet *</label>
+              <input type="text" id="lf_name" name="name">
+            </div>
+            <div>
+              <label for="lf_email">Email professionnel *</label>
+              <input type="email" id="lf_email" name="email">
+            </div>
+            <div>
+              <label for="lf_company">Entreprise / Organisation</label>
+              <input type="text" id="lf_company" name="entreprise">
+            </div>
+            <div>
+              <label for="lf_service">Service recherché *</label>
+              <select id="lf_service" name="service">
+                <option value="">Sélectionnez...</option>
+                <option>VAPT / Pentest</option>
+                <option>Audit de cybersécurité</option>
+                <option>Audit de code source</option>
+                <option>Durcissement</option>
+                <option>Intégration IA / automatisation</option>
+                <option>OSINT / renseignement sur les menaces</option>
+                <option>Création de CTF</option>
+                <option>Formation / sensibilisation</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div>
+              <label for="lf_msg">Votre contexte / besoin (optionnel)</label>
+              <textarea id="lf_msg" name="message" rows="3"></textarea>
+            </div>
+            <button type="submit" id="lf_submit" class="lead-submit">Envoyer ma demande <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:.7rem; margin-bottom:1rem;">
+            <span class="logo-circle" style="width:42px;height:42px;"><img src="cyb.png" alt="" style="width:34px;height:34px;object-fit:contain;border-radius:50%;"></span>
+            <span style="font-family:'Montserrat';font-weight:900;color:var(--primary);font-size:1.2rem;">CYBZAN</span>
+          </div>
+          <p>
+            Gardiens du cyberespace, tels des Zangbéto. CYBZAN protège les infrastructures
+            numériques et développe des capacités de cybersécurité durables, partout dans le monde.
+          </p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#about">L'entreprise</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#realisations">Réalisations</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Restez informés</h4>
+          <p style="margin-bottom:.9rem;">Suivez-nous sur nos réseaux pour les dernières actualités cybersécurité.</p>
+          <div style="display:flex; gap:.9rem; margin-bottom:1.2rem;">
+            <a href="https://www.linkedin.com/company/cybzan/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" style="font-size:1.3rem;"></i></a>
+            <a href="https://ctf-radar.cybzan.com/" target="_blank" rel="noopener" aria-label="CTF Radar"><i class="fas fa-satellite" style="font-size:1.3rem;"></i></a>
+          </div>
+          <p><a href="mailto:contact@cybzan.com">contact@cybzan.com</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CYBZAN. Tous droits réservés.</p>
+        <p><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Popup -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <div class="check"><i class="fas fa-check"></i></div>
+      <h3>Message envoyé !</h3>
+      <p>Merci pour votre confiance. Nous revenons vers vous sous 48h.</p>
+      <button id="popup-close">Fermer</button>
+    </div>
+  </div>
+
+  <script>
+  // Loader
+  window.addEventListener('load', function(){
+    setTimeout(function(){ document.getElementById('site-loader').classList.add('done'); }, 500);
+  });
+  // Failsafe: hide loader after 3s even if fully loaded delayed
+  setTimeout(function(){ document.getElementById('site-loader').classList.add('done'); }, 3000);
+
+  // Nav scroll
+  var nav = document.getElementById('mainnav');
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // Burger
+  document.getElementById('burger').addEventListener('click', function(){
+    document.getElementById('mobilemenu').classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(function(a){
+    a.addEventListener('click', function(){ document.getElementById('mobilemenu').classList.remove('open'); });
+  });
+
+  // Smooth anchor (native via CSS) - offset extra for nav height
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+    anchor.addEventListener('click', function(e){
+      var id = this.getAttribute('href');
+      if (id === '#') return;
+      var el = document.querySelector(id);
+      if (el) {
+        e.preventDefault();
+        window.scrollTo({ top: el.offsetTop - 76, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Reveal
+  var revObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting) { en.target.classList.add('visible'); revObs.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+  // Count-up
+  var cntObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var el = en.target;
+      var raw = el.getAttribute('data-target');
+      var target = parseInt(raw.replace(/[^0-9]/g, ''), 10);
+      var showComma = raw.includes(',');
+      var start = null, dur = 1600;
+      function step(ts){
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var val = Math.round(target * eased);
+        var txt = showComma ? val.toLocaleString('en-US') : val.toString();
+        if (raw.length === 2 && raw[0] === '0') { /* '08' style */ }
+        el.textContent = txt;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      cntObs.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.count').forEach(function(el){ cntObs.observe(el); });
+
+  // Form
+  document.getElementById('lf_submit').addEventListener('click', function(e){
+    e.preventDefault();
+    var name = document.getElementById('lf_name');
+    var email = document.getElementById('lf_email');
+    var service = document.getElementById('lf_service');
+    [name, email, service].forEach(function(x){ x.classList.remove('err'); });
+
+    if (name.value && email.value && email.value.includes('@') && service.value) {
+      var form = document.getElementById('lead-form');
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .catch(function(){})
+        .finally(function(){
+          document.getElementById('popup').classList.add('show');
+          form.reset();
+        });
+    } else {
+      if (!name.value) name.classList.add('err');
+      if (!email.value || !email.value.includes('@')) email.classList.add('err');
+      if (!service.value) service.classList.add('err');
+    }
+  });
+  document.getElementById('popup-close').addEventListener('click', function(){
+    document.getElementById('popup').classList.remove('show');
+  });
+  document.getElementById('popup').addEventListener('click', function(e){
+    if (e.target === this) this.classList.remove('show');
+  });
+  </script>
+</body>
+</html>
